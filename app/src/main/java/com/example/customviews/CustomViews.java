@@ -1,23 +1,19 @@
 package com.example.customviews;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-
-/**
- * Created by Oleja on 25.10.2017.
- */
 
 public class CustomViews extends LinearLayout {
 
     private String customText;
     private Context context;
+
     public CustomViews(Context context) {
         super(context);
         this.context = context;
@@ -27,7 +23,7 @@ public class CustomViews extends LinearLayout {
     public CustomViews(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
-       init();
+        init();
 
     }
 
@@ -38,17 +34,27 @@ public class CustomViews extends LinearLayout {
     }
 
     private void init() {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.custom_view, this);
-        Button button = view.findViewById(R.id.buton);
-        final TextView textV = view.findViewById(R.id.textView);
+        final View view = LayoutInflater.from(getContext()).inflate(R.layout.custom_view, this);
+        view.setEnabled(false);
+        Button button = view.findViewById(R.id.button);
+        final EditText editText = view.findViewById(R.id.etName);
 
         button.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View view) {
-                textV.setText("Click");
+            public void onClick(View view1) {
+                if (!editText.getText().toString().isEmpty()) {
+                    customText = editText.getText().toString();
+                    callOnClick();
+                    editText.setEnabled(false);
+                    view1.setVisibility(GONE);
+                }
             }
         });
 
+    }
+
+    public String getCustomText() {
+        return customText;
     }
 
 

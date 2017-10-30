@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<ScrollView
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.customviews.MainActivity">
 
-    <com.example.customviews.CustomViewAttr
-        android:id="@+id/customVAttr"
+    <LinearLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:custom_text="BlaBlaBla" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <com.example.customviews.CustomViews
-        android:id="@+id/customV"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_below="@id/customVAttr"/>
+        <com.example.customviews.CustomViews
+            android:id="@+id/customV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
+</ScrollView>
 
-
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:src="@android:drawable/ic_menu_save"/>
 </RelativeLayout>
